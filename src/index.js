@@ -1,13 +1,27 @@
-function generatePoem(event) {
-  event.preventDefault();
-
+function displayPoem(response) {
   new Typewriter("#poem", {
-    strings:
-      "Over the wintry Forest, \nwinds howl in rage \nWith no leaves to blow.",
+    strings: response.data.answer.replace("```", ""),
     autoStart: true,
     delay: 1,
     cursor: null,
   });
+}
+
+function generatePoem(event) {
+  event.preventDefault();
+
+  let instructionsInput = document.querySelector("#user-instructions");
+
+  let apiKey = "fbeo6b3af9d08bb94a5d7e475ct03604";
+  let prompt = `User instructions are: Generate a hiaku about ${instructionsInput.value}`;
+  let context =
+    "You are a hiaku poem expert and love to write poems in the hiaku style. Your mission is to write a poem, in the hiaku style, on the topic provided by the `user instructions`. Make sure to listen to the user instructions. Please present the hiaku in HTML format with each line seperated by a <br /> and present the test of the poem in <em> format. Please don't mention html or HTML in your response. Sign off the poem at the end with `SheCodes AI` inside a <strong> element";
+  let apiUrl = `https://api.shecodes.io/ai/v1/generate?prompt=${prompt}&context=${context}&key=${apiKey}`;
+
+  console.log("Generating Poem");
+  console.log(`Prompt: ${prompt}`);
+  console.log(`Context: ${context}`);
+  axios.get(apiUrl).then(displayPoem);
 }
 
 let poemFormElement = document.querySelector("#poem-generator-form");
