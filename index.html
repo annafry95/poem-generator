@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="src/styles.css" />
+    <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
     <title>AI Poem Generator</title>
   </head>
   <body>
@@ -12,7 +13,7 @@
         <h1>AI Haiku Generator</h1>
       </header>
       <main>
-        <form>
+        <form id="poem-generator-form">
           <input
             type="text"
             placeholder="Enter a topic for your Haiku..."
@@ -23,12 +24,8 @@
           />
           <input type="submit" class="submit-button" />
         </form>
-        <div class="poem">
-          Over the wintry
-          <br />
-          Forest, winds howl in rage
-          <br />
-          With no leaves to blow.
+        <div class="poem" id="poem">
+          <em> </em>
         </div>
       </main>
       <footer>
