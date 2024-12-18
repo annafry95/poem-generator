@@ -18,6 +18,10 @@ function generatePoem(event) {
     "You are a hiaku poem expert and love to write poems in the hiaku style. Your mission is to write a poem, in the hiaku style, on the topic provided by the `user instructions`. Make sure to listen to the user instructions. Please present the hiaku in HTML format with each line seperated by a <br /> and present the test of the poem in <em> format. Please don't mention html or HTML in your response. Sign off the poem at the end with `SheCodes AI` inside a <strong> element and seperated from the poem with a <br />";
   let apiUrl = `https://api.shecodes.io/ai/v1/generate?prompt=${prompt}&context=${context}&key=${apiKey}`;
 
+  let poemElement = document.querySelector("#poem");
+  poemElement.classList.remove("hidden");
+  poemElement.innerHTML = `<div class="generating">⏳ Generating you a hiaku, please wait... </div>`;
+
   console.log("Generating Poem");
   console.log(`Prompt: ${prompt}`);
   console.log(`Context: ${context}`);
