@@ -22,9 +22,6 @@ function generatePoem(event) {
   poemElement.classList.remove("hidden");
   poemElement.innerHTML = `<div class="generating">⏳ Generating you a hiaku, please wait... </div>`;
 
-  console.log("Generating Poem");
-  console.log(`Prompt: ${prompt}`);
-  console.log(`Context: ${context}`);
   axios.get(apiUrl).then(displayPoem);
 }
 
